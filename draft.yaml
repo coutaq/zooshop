@@ -1,7 +1,10 @@
 models:
   Product:
     title: string:255
+    description: string:255
     
+
 
 controllers:
   # ...
+  
