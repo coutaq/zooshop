@@ -1,2 +1,34 @@
+created:
+    - database/factories/CategoryFactory.php
+    - database/factories/ProductFactory.php
+    - database/factories/OrderFactory.php
+    - database/factories/SubcategoryFactory.php
+    - database/factories/BasketFactory.php
+    - database/factories/RoleFactory.php
+    - database/migrations/2022_03_29_101209_create_categories_table.php
+    - database/migrations/2022_03_29_101210_create_products_table.php
+    - database/migrations/2022_03_29_101211_create_orders_table.php
+    - database/migrations/2022_03_29_101212_create_subcategories_table.php
+    - database/migrations/2022_03_29_101213_create_baskets_table.php
+    - database/migrations/2022_03_29_101214_create_roles_table.php
+    - database/migrations/2022_03_29_101215_create_basket_product_table.php
+    - app/Models/Category.php
+    - app/Models/Product.php
+    - app/Models/Order.php
+    - app/Models/Subcategory.php
+    - app/Models/Basket.php
+    - app/Models/Role.php
+    - database/seeders/ProductSeeder.php
+    - database/seeders/CategorySeeder.php
+    - database/seeders/OrderSeeder.php
+    - database/seeders/SubcategorySeeder.php
+    - database/seeders/BasketSeeder.php
+    - database/seeders/RoleSeeder.php
 models:
     User: {  }
+    Category: { title: 'string:255', description: 'string:400', image: 'string:255', relationships: { hasMany: Subcategory } }
+    Product: { title: 'string:255', description: 'string:400', price: 'double:8,2', discount: 'double:8,2', amount: number, image: 'string:255', subcategory_id: 'id foreign', relationships: { belongsTo: Subcategory } }
+    Order: { product_id: 'id foreign', user_id: 'id foreign', amount: integer, relationships: { hasMany: Product } }
+    Subcategory: { title: 'string:255', category_id: 'id foreign', relationships: { hasMany: Product, belongsTo: Category } }
+    Basket: { user_id: 'id foreign', relationships: { belongsTo: User, belongsToMany: Product } }
+    Role: { title: 'string:255', slug: 'string:255' }
