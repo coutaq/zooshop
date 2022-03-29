@@ -2,28 +2,28 @@
 
 namespace App\Services;
 
-use App\Models\Product;
+use App\Models\Subcategory;
 
-class ProductService
+class SubcategoryService
 {
     public function browse(){
-        return Product::all();
+        return Subcategory::all();
 
     }
     public function read($id){
-        return Product::findOrFail($id);
+        return Subcategory::findOrFail($id);
     }
     public function edit($id, $data){
-        $item = Product::findOrFail($id);
+        $item = Subcategory::findOrFail($id);
         $item->update($data);
         return $item;
     }
     public function add($data){
-        $item = Product::create($data);
+        $item = Subcategory::create($data);
         return $item;
-    }   
+    }
     public function delete($id){
-        $item = Product::findOrFail($id);
+        $item = Subcategory::findOrFail($id);
         $item->delete;
     }
 }

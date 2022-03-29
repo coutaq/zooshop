@@ -2,28 +2,28 @@
 
 namespace App\Services;
 
-use App\Models\Product;
+use App\Models\Basket;
 
-class ProductService
+class BasketService
 {
     public function browse(){
-        return Product::all();
+        return Basket::all();
 
     }
     public function read($id){
-        return Product::findOrFail($id);
+        return Basket::findOrFail($id);
     }
     public function edit($id, $data){
-        $item = Product::findOrFail($id);
+        $item = Basket::findOrFail($id);
         $item->update($data);
         return $item;
     }
     public function add($data){
-        $item = Product::create($data);
+        $item = Basket::create($data);
         return $item;
     }   
     public function delete($id){
-        $item = Product::findOrFail($id);
+        $item = Basket::findOrFail($id);
         $item->delete;
     }
 }

@@ -5,25 +5,19 @@ created:
     - database/factories/SubcategoryFactory.php
     - database/factories/BasketFactory.php
     - database/factories/RoleFactory.php
-    - database/migrations/2022_03_29_101209_create_categories_table.php
-    - database/migrations/2022_03_29_101210_create_products_table.php
-    - database/migrations/2022_03_29_101211_create_orders_table.php
-    - database/migrations/2022_03_29_101212_create_subcategories_table.php
-    - database/migrations/2022_03_29_101213_create_baskets_table.php
-    - database/migrations/2022_03_29_101214_create_roles_table.php
-    - database/migrations/2022_03_29_101215_create_basket_product_table.php
+    - database/migrations/2022_03_29_101903_create_categories_table.php
+    - database/migrations/2022_03_29_101904_create_products_table.php
+    - database/migrations/2022_03_29_101905_create_orders_table.php
+    - database/migrations/2022_03_29_101906_create_subcategories_table.php
+    - database/migrations/2022_03_29_101907_create_baskets_table.php
+    - database/migrations/2022_03_29_101908_create_roles_table.php
+    - database/migrations/2022_03_29_101909_create_basket_product_table.php
     - app/Models/Category.php
     - app/Models/Product.php
     - app/Models/Order.php
     - app/Models/Subcategory.php
     - app/Models/Basket.php
     - app/Models/Role.php
-    - database/seeders/ProductSeeder.php
-    - database/seeders/CategorySeeder.php
-    - database/seeders/OrderSeeder.php
-    - database/seeders/SubcategorySeeder.php
-    - database/seeders/BasketSeeder.php
-    - database/seeders/RoleSeeder.php
 models:
     User: {  }
     Category: { title: 'string:255', description: 'string:400', image: 'string:255', relationships: { hasMany: Subcategory } }
