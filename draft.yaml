@@ -1,10 +1,41 @@
 models:
+  Category:
+    title: string:255
+    description: string:400
+    image: string:255
+    relationships:
+      hasMany: Subcategory
   Product:
     title: string:255
-    description: string:255
-    
+    description: string:400
+    price: double:8,2
+    discount: double:8,2
+    amount: number
+    image: string:255
+    subcategory_id: id foreign
+    relationships:
+      belongsTo: Subcategory
+
+  Order:
+    product_id: id foreign
+    user_id: id foreign
+    amount: integer
+    relationships:
+      hasMany: Product
+  Subcategory:
+    title: string:255
+    category_id: id foreign
+    relationships:
+      hasMany: Product
+      belongsTo: Category
+  Basket:
+    user_id: id foreign
+    relationships:
+      belongsTo: User
+      belongsToMany: Product
+  Role:
+    title: string:255
+    slug: string:255
 
 
-controllers:
-  # ...
-  
+seeders: Product, Category, Order, Subcategory, Basket, Role
