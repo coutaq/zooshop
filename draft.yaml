@@ -38,4 +38,4 @@ models:
     slug: string:255
 
 
-seeders: Product, Category, Order, Subcategory, Basket, Role
+# seeders: Product, Category, Order, Subcategory, Basket, Role
