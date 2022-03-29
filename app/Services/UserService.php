@@ -2,28 +2,28 @@
 
 namespace App\Services;
 
-use App\Models\Product;
+use App\Models\User;
 
-class ProductService
+class UserService
 {
     public function browse(){
-        return Product::all();
+        return User::all();
 
     }
     public function read($id){
-        return Product::findOrFail($id);
+        return User::findOrFail($id);
     }
     public function edit($id, $data){
-        $item = Product::findOrFail($id);
+        $item = User::findOrFail($id);
         $item->update($data);
         return $item;
     }
     public function add($data){
-        $item = Product::create($data);
+        $item = User::create($data);
         return $item;
-    }   
+    }
     public function delete($id){
-        $item = Product::findOrFail($id);
+        $item = User::findOrFail($id);
         $item->delete;
     }
 }
