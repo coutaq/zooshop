@@ -1,0 +1,7 @@
+models:
+  Product:
+    title: string:255
+    
+
+controllers:
+  # ...
