@@ -2,10 +2,6 @@
 
 @section('title', 'Категории')
 
-@section('content_header')
-
-@stop
-
 @section('content')
 <div class="col-md-12">
     @isset($category)
@@ -16,9 +12,10 @@
 
     <form method="POST" enctype="multipart/form-data" @isset($category)
         action="{{ route('category.update', $category) }}" @else action="{{ route('category.store') }}" @endisset>
+        @method('PUT')
         <div>
             @isset($category)
-            @method('PUT')
+
             @endisset
             @csrf
 
@@ -32,6 +29,7 @@
                     <input type="text" class="form-control" title="title" id="name"
                         value="@isset($category){{ $category->title }}@endisset">
                 </div>
+
             </div>
             <br>
             <div class="input-group row">
@@ -45,7 +43,11 @@
                 </div>
             </div>
             <br>
+            @error('image')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="input-group row">
+
                 <label for="image" class="col-sm-2 col-form-label">Картинка: </label>
                 {{-- <div class="col-sm-10">
                     <label class="btn btn-default btn-file">
@@ -55,7 +57,7 @@
                 <x-adminlte-input name="image" label="Ссылка на изображение" fgroup-class="col-md-6" disable-feedback />
             </div>
         </div>
-        <button class="btn btn-success">Сохранить</button>
+        <button type='submit' class="btn btn-success">Сохранить</button>
 </div>
 </form>
 </div>
