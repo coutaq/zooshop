@@ -43,8 +43,6 @@ class AdminCategoryController extends Controller
     {
         $category = $service->add($request->validated());
 
-        // $request->session()->flash('category.id', $category->id);
-
         return redirect()->route('category.index');
     }
 
@@ -81,12 +79,10 @@ class AdminCategoryController extends Controller
      */
     public function update(CategoryService $service, CategoryUpdateRequest $request, $id)
     {
+        dd('test');
         $service->edit($id, $request->validated());
-        // $category->update($request->validated());
 
-        // $request->session()->flash('category.id', $category->id);
-
-        return redirect()->route('category.index');+
+        return redirect()->route('category.index');
     }
 
     /**

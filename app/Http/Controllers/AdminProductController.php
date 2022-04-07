@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\ProductService;
+use App\Http\Requests\ProductStoreRequest;
+use App\Http\Requests\ProductUpdateRequest;
 
 class AdminProductController extends Controller
 {
@@ -11,9 +14,11 @@ class AdminProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ProductService $service, Request $request)
     {
-        //
+        $products = $service->browse();
+
+        return view('admin.products.index', compact('products'));
     }
 
     /**
@@ -23,7 +28,7 @@ class AdminProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.product.create');
     }
 
     /**
@@ -32,9 +37,11 @@ class AdminProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductStoreRequest $request, ProductService $service)
     {
-        //
+        $product = $service->add($request->validated());
+
+        return redirect()->route('product.index');
     }
 
     /**
@@ -43,9 +50,10 @@ class AdminProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(ProductService $service, $id)
     {
-        //
+        $product = $service->read($id);
+        return view('admin.product.show', compact('product'));
     }
 
     /**
@@ -54,9 +62,10 @@ class AdminProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(ProductService $service, $id)
     {
-        //
+        $product = $service->read($id);
+        return view('admin.product.edit', compact('product'));
     }
 
     /**
@@ -66,9 +75,11 @@ class AdminProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductService $service, ProductUpdateRequest $request, $id)
     {
-        //
+        $service->edit($id, $request->validated());
+
+        return redirect()->route('product.index');
     }
 
     /**
@@ -77,8 +88,8 @@ class AdminProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ProductService $service, $id)
     {
-        //
+        $service->delete($id);
     }
 }

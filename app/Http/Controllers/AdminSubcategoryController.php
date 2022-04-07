@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SubcategoryStoreRequest;
+use App\Http\Requests\SubcategoryUpdateRequest;
+use App\Services\SubcategoryService;
 use Illuminate\Http\Request;
 
 class AdminSubcategoryController extends Controller
@@ -11,9 +14,11 @@ class AdminSubcategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(SubcategoryService $service, Request $request)
     {
-        //
+        $subcategories = $service->browse();
+
+        return view('admin.subcategory.index', compact('subcategories'));
     }
 
     /**
@@ -21,9 +26,9 @@ class AdminSubcategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return view('admin.subcategory.create');
     }
 
     /**
@@ -32,9 +37,11 @@ class AdminSubcategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SubcategoryStoreRequest $request, SubcategoryService $service)
     {
-        //
+        $subcategory = $service->add($request->validated());
+
+        return redirect()->route('subcategory.index');
     }
 
     /**
@@ -43,9 +50,10 @@ class AdminSubcategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(SubcategoryService $service, $id)
     {
-        //
+        $subcategory = $service->read($id);
+        return view('admin.subcategory.show', compact('subcategory'));
     }
 
     /**
@@ -54,9 +62,10 @@ class AdminSubcategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(SubcategoryService $service, $id)
     {
-        //
+        $subcategory = $service->read($id);
+        return view('admin.subcategory.edit', compact('subcategory'));
     }
 
     /**
@@ -66,9 +75,11 @@ class AdminSubcategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SubcategoryService $service, SubcategoryUpdateRequest $request, $id)
     {
-        //
+        $service->edit($id, $request->validated());
+
+        return redirect()->route('subcategory.index');
     }
 
     /**
@@ -77,8 +88,8 @@ class AdminSubcategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(SubcategoryService $service, $id)
     {
-        //
+        $service->delete($id);
     }
 }
