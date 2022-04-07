@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryStoreRequest;
+use App\Http\Requests\CategoryUpdateRequest;
+use App\Models\Category;
+use App\Services\CategoryService;
 use Illuminate\Http\Request;
 
 class AdminCategoryController extends Controller
@@ -11,12 +15,12 @@ class AdminCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(CategoryService $service, Request $request)
     {
 
-        $categories = Category::all();
+        $categories = $service->browse();
 
-        return view('category.index', compact('categories'));
+        return view('admin.category.index', compact('categories'));
     }
 
     /**
@@ -26,7 +30,7 @@ class AdminCategoryController extends Controller
      */
     public function create(Request $request)
     {
-        return view('category.create');
+        return view('admin.category.create');
     }
 
     /**
@@ -35,11 +39,11 @@ class AdminCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryStoreRequest $request)
+    public function store(CategoryStoreRequest $request, CategoryService $service)
     {
-        $category = Category::create($request->validated());
+        $category = $service->add($request->validated());
 
-        $request->session()->flash('category.id', $category->id);
+        // $request->session()->flash('category.id', $category->id);
 
         return redirect()->route('category.index');
     }
@@ -50,9 +54,10 @@ class AdminCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(CategoryService $service, $id)
     {
-        return view('category.show', compact('category'));
+        $category = $service->read($id);
+        return view('admin.category.show', compact('category'));
     }
 
     /**
@@ -61,9 +66,10 @@ class AdminCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(CategoryService $service, $id)
     {
-        return view('category.edit', compact('category'));
+        $category = $service->read($id);
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
@@ -73,13 +79,14 @@ class AdminCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryUpdateRequest $request, $id)
+    public function update(CategoryService $service, CategoryUpdateRequest $request, $id)
     {
-        $category->update($request->validated());
+        $service->edit($id, $request->validated());
+        // $category->update($request->validated());
 
-        $request->session()->flash('category.id', $category->id);
+        // $request->session()->flash('category.id', $category->id);
 
-        return redirect()->route('category.index');
+        return redirect()->route('category.index');+
     }
 
     /**
@@ -88,8 +95,8 @@ class AdminCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(CategoryService $service, $id)
     {
-        //
+        $service->delete($id);
     }
 }
