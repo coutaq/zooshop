@@ -9,21 +9,21 @@ console.log(product)
 <template>
    
     <div
-        class="rounded-lg shadow-lg bg-white max-w-sm hover:shadow-2xl hover:scale-105 duration-300"
+        class="rounded-lg shadow-lg bg-white w-4/5 lg:w-1/5 h-[432px] flex-none hover:shadow-2xl hover:scale-105 duration-300 flex flex-col justify-between"
     >
             <img
                 class="rounded-t-lg"
                 :src="product.image"
             
             />
-        <div class="p-6">
+        <div class="px-6">
             <h5 class="text-gray-600 text-md font-light">{{product.subcategory.category.title}}</h5>
             <h5 class="text-gray-900 text-xl font-medium mb-2">{{product.title}}</h5>
             <p class="text-emerald-700 text-xl my-2">
                 {{product.price}} руб.
             </p>
         </div>
-        <div class="flex justify-between items-center p-6">
+        <div class="flex justify-between items-center px-6 mb-3">
             <a href="#" class="text-blue-600 text-lg font-bold">Узнать больше</a>
             <button
                 type="button"

@@ -7,7 +7,7 @@ use App\Models\Product;
 class ProductService
 {
     public function browse(){
-        return Product::with('category')->get();
+        return Product::with('subcategory.category')->get();
 
     }
     public function read($id){
@@ -25,5 +25,8 @@ class ProductService
     public function delete($id){
         $item = Product::findOrFail($id);
         $item->delete;
+    }
+    public function random($n){
+        return Product::with('subcategory.category')->inRandomOrder()->limit($n)->get();
     }
 }

@@ -28320,11 +28320,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "rounded-lg shadow-lg bg-white max-w-sm hover:shadow-2xl hover:scale-105 duration-300"
+  "class": "rounded-lg shadow-lg bg-white w-4/5 lg:w-1/5 h-[432px] flex-none hover:shadow-2xl hover:scale-105 duration-300 flex flex-col justify-between"
 };
 var _hoisted_2 = ["src"];
 var _hoisted_3 = {
-  "class": "p-6"
+  "class": "px-6"
 };
 var _hoisted_4 = {
   "class": "text-gray-600 text-md font-light"
@@ -28337,7 +28337,7 @@ var _hoisted_6 = {
 };
 
 var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "flex justify-between items-center p-6"
+  "class": "flex justify-between items-center px-6 mb-3"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
   href: "#",
   "class": "text-blue-600 text-lg font-bold"

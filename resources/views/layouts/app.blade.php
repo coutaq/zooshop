@@ -21,11 +21,11 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
-<body>
-    <div id="app" class='grid columns-12 gap-8 max-w-7xl mx-auto mt-10'>
-        <nav class="col-span-12 bg-blue-100 p-8 flex justify-between items-center">
+<body class='antialiased'  id="app">
+    <div>
+        <nav class="sticky top-0 z-40 w-full backdrop-blur transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10  bg-white supports-backdrop-blur:bg-white/95 flex flex-none justify-between">
             <div>
-                <logo-large></logo-large>
+                <logo-large class="py-2 px-0"></logo-large>
             </div>
             <div class="flex gap-5 items-center text-xl">
                 @guest
@@ -55,10 +55,11 @@
                 @endguest
             </div>
         </nav>
-
-        <main class="py-4 px-4 lg:px-0 col-span-12">
-            @yield('content')
-        </main>
+        <div class='grid columns-12 gap-8 max-w-7xl mx-auto mt-10'>
+            <main class="py-4 px-4 lg:px-0 col-span-12">
+                @yield('content')
+            </main>
+        </div>
     </div>
 </body>
 
