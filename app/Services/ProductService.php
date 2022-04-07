@@ -7,11 +7,11 @@ use App\Models\Product;
 class ProductService
 {
     public function browse(){
-        return Product::all();
+        return Product::with('category')->get();
 
     }
     public function read($id){
-        return Product::findOrFail($id);
+        return Product::with('subcategory.category')->findOrFail($id);
     }
     public function edit($id, $data){
         $item = Product::findOrFail($id);
