@@ -6,23 +6,32 @@ use App\Models\Category;
 
 class CategoryService
 {
-    public function browse(){
+    //возваращает все категории
+    public function browse()
+    {
         return Category::all();
-
     }
-    public function read($id){
+    //возвращает одну категорию по айди
+    public function read($id)
+    {
         return Category::findOrFail($id);
     }
-    public function edit($id, $data){
+    // редактирует категорию по айди
+    public function edit($id, $data)
+    {
         $item = Category::findOrFail($id);
         $item->update($data);
         return $item;
     }
-    public function add($data){
+    //добавляет категорию в бд
+    public function add($data)
+    {
         $item = Category::create($data);
         return $item;
     }
-    public function delete($id){
+    //удаляет категорию по айди
+    public function delete($id)
+    {
         $item = Category::findOrFail($id);
         $item->delete;
     }
