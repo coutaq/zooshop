@@ -21,46 +21,44 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
-<body>
-    <div id="app" class='grid columns-12 gap-8 max-w-7xl mx-auto mt-10'>
-        <nav class="col-span-12 bg-amber-300 p-8 flex justify-between items-center">
-            <div>
-                <logo-large></logo-large>
-            </div>
-            <div class="flex gap-5 items-center text-xl">
-                @guest
-                @if (Route::has('login'))
+<body class='antialiased'  id="app">
+    <div class>
+        <nav class="sticky top-0 z-40 w-full backdrop-blur transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10  bg-white bg-white/80 ">
+            <div class="max-w-7xl flex flex-none justify-between mx-auto pr-8">
+                <div>
+                    <logo-large class="py-2 px-0"></logo-large>
+                </div>
+                <burger-menu></burger-menu>
+                <div class="flex gap-5 items-center text-xl mr-2">
+                    @guest
+                    @if (Route::has('login'))
                     <a class="nav-link" href="{{ route('login') }}">Вход</a>
-                @endif
-
-                @if (Route::has('register'))
+                    @endif
+                    @if (Route::has('register'))
                     <a class="nav-link" href="{{ route('register') }}">Регистрация</a>
-                @endif
-                @else
-                <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }}
-                    </a>
-
+                    @endif
+                    @else
+                    <p>
+                        Добро пожаловать, {{ Auth::user()->name }}
+                    </p>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                                                         document.getElementById('logout-form').submit();">
+                            {{ __('Выход') }}
                         </a>
-
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
                     </div>
-                </li>
-                @endguest
+                    @endguest
+                </div>
             </div>
         </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <div class='w-full mx-0 mt-4'>
+            <main class="py-4 lg:px-0 col-span-12 grid grid-cols-12 gap-8">
+                @yield('content')
+            </main>
+        </div>
     </div>
 </body>
 

@@ -25,7 +25,7 @@ class CategoryFactory extends Factory
         return [
             'title' => $this->faker->sentence(4),
             'description' => $this->faker->text,
-            'image' => $this->faker->regexify('[A-Za-z0-9]{255}'),
+            'image' => $this->faker->imageUrl(640, 480, 'animals', true),
         ];
     }
 }

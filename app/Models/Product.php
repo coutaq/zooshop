@@ -40,4 +40,9 @@ class Product extends Model
     {
         return $this->belongsTo(Subcategory::class);
     }
+
+    public function category()
+    {
+        return $this->hasOneThrough(Subcategory::class,Category::class);
+    }
 }

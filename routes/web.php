@@ -21,7 +21,7 @@ Auth::routes();
 
 
 
-Route::resource('product', App\Http\Controllers\ProductController::class);
+// Route::resource('product', App\Http\Controllers\ProductController::class);
 
 
-Route::resource('product', App\Http\Controllers\ProductController::class);
+// Route::resource('product', App\Http\Controllers\ProductController::class);

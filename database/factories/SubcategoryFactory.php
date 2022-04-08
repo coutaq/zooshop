@@ -25,7 +25,7 @@ class SubcategoryFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(4),
-            'category_id' => Category::factory(),
+            'category_id' => Category::inRandomOrder()->first()->id
         ];
     }
 }
