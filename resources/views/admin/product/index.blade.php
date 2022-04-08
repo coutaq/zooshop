@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Категории')
+@section('title', 'Продукты')
 
 @section('content_header')
-<h1>Категории</h1>
+<h1>Продукты</h1>
 @stop
 
 @section('content')
@@ -12,7 +12,11 @@ $heads = [
 '№',
 'Наименование',
 'Описание',
+"Цена",
+"Скидка",
+"Количество",
 "Изображение",
+"Подкатегории",
 ['label' => 'Действия', 'no-export' => true, 'width' => 5],
 
 ];
@@ -23,27 +27,40 @@ $config = [
 ];
 @endphp
 
+<a class="btn btn-success mx-auto" type="button" href="{{ route('product.create') }}">➕</a>
 <x-adminlte-datatable id="table1" :heads="$heads" with-buttons :config="$config">
-    @foreach($categories as $category)
+    @foreach($products as $product)
     <tr>
         <td>
-            {{$category->id}}
+            {{$product->id}}
         </td>
         <td>
-            {{$category->title}}
+            {{$product->title}}
         </td>
         <td>
-            {{$category->description}}
+            {{$product->description}}
         </td>
         <td>
-            {{$category->image}}
+            {{$product->price}}
         </td>
         <td>
-            <a class="btn btn-success mx-auto" type="button" href="{{ route('category.create') }}">➕</a>
-            <a class='btn btn-warning' href='{{route("category.edit", ["category"=>$category])}}'>✏️
+            {{$product->discount}}
+        </td>
+        <td>
+            {{$product->amount}}
+        </td>
+        <td>
+            {{$product->image}}
+        </td>
+        <td>
+            {{$product->subcategory_id}}
+        </td>
+        <td>
+
+            <a class='btn btn-warning' href='{{route("product.edit", ["product"=>$product])}}'>✏️
             </a>
 
-            <form action="{{route('category.destroy', ['category'=>$category])}}" method="POST">
+            <form action="{{route('product.destroy', ['product'=>$product])}}" method="POST">
                 @csrf
                 @method("delete")
                 <button type='submit' class='btn btn-danger'>🗑️</button>

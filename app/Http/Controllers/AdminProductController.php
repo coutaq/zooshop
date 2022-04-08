@@ -18,7 +18,7 @@ class AdminProductController extends Controller
     {
         $products = $service->browse();
 
-        return view('admin.products.index', compact('products'));
+        return view('admin.product.index', compact('products'));
     }
 
     /**
