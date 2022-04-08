@@ -28,9 +28,9 @@ class ProductFactory extends Factory
             'description' => $this->faker->text,
             'price' => $this->faker->randomFloat(2, 0, 999999.99),
             'discount' => $this->faker->randomFloat(2, 0, 999999.99),
-            'amount' => $this->faker->word,
-            'image' => $this->faker->regexify('[A-Za-z0-9]{255}'),
-            'subcategory_id' => Subcategory::factory(),
+            'amount' => $this->faker->randomNumber,
+            'image' => $this->faker->imageUrl(640, 480, 'animals', true),
+            'subcategory_id' => Subcategory::inRandomOrder()->first()->id,
         ];
     }
 }

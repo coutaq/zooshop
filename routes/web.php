@@ -25,7 +25,3 @@ Route::prefix('admin')->group(function () {
     Route::resource('subcategory', App\Http\Controllers\AdminSubcategoryController::class);
 });
 
-//
-
-
-// Route::resource('product', App\Http\Controllers\ProductController::class);
