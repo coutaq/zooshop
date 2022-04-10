@@ -40,7 +40,7 @@ $config = [
         </td>
 
         <td>
-            <a class="btn btn-success mx-auto" type="button" href="{{ route('order.create') }}">➕</a>
+
             <a class='btn btn-warning' href='{{route("order.edit", ["order"=>$order])}}'>✏️
             </a>
 
