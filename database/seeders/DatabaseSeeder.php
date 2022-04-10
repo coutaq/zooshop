@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             // OrderSeeder::class,
             
             // // RoleSeeder::class,
+            BrandSeeder::class,
             SubcategorySeeder::class,
             ProductSeeder::class,
         ]);

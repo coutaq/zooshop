@@ -29,4 +29,20 @@ class ProductService
     public function random($n){
         return Product::with('subcategory.category')->inRandomOrder()->limit($n)->get();
     }
+
+    public function paginateAll($n){
+        $item = Product::with('subcategory.category')->paginate($n);
+    }
+    public function paginateRandom($n){
+        return Product::with('subcategory.category')->inRandomOrder()->paginate($n);
+    }
+    public function paginateCategory($id, $n){
+        return Product::with('subcategory.category')->whereHas('subcategory', function ($query) use($id)  {
+            return $query->where('category_id', '=', $id);
+        })->paginate($n);
+    }
+
+    public function paginateBrand($id, $n){
+        return Product::where('brand_id', $id)->paginate($n);
+    }
 }

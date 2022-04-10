@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->string('amount');
             $table->string('image', 255);
             $table->foreignId('subcategory_id')->constrained();
+            $table->foreignId('brand_id')->constrained();
             $table->timestamps();
         });
 

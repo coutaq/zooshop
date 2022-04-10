@@ -22,6 +22,7 @@ class Product extends Model
         'amount',
         'image',
         'subcategory_id',
+        'brand_id'
     ];
 
     /**
@@ -44,5 +45,9 @@ class Product extends Model
     public function category()
     {
         return $this->hasOneThrough(Subcategory::class,Category::class);
+    }
+    public function brand()
+    {
+        return $this->belongsTo(Subcategory::class);
     }
 }

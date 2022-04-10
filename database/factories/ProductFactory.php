@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Brand;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use App\Models\Product;
@@ -24,13 +25,14 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->sentence(4),
+            'title' => $this->faker->sentence(2),
             'description' => $this->faker->text,
             'price' => $this->faker->randomFloat(2, 0, 999999.99),
             'discount' => $this->faker->randomFloat(2, 0, 999999.99),
             'amount' => $this->faker->randomNumber,
             'image' => $this->faker->imageUrl(640, 480, 'animals', true),
             'subcategory_id' => Subcategory::inRandomOrder()->first()->id,
+            'brand_id' => Brand::inRandomOrder()->first()->id,
         ];
     }
 }
