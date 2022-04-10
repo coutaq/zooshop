@@ -259,6 +259,11 @@ return [
             'icon' => 'fas fa-address-card',
         ],
         [
+            'text' => 'Бренды',
+            'url'  => 'admin/brand',
+            'icon' => 'fas fa-address-card',
+        ],
+        [
             'text'    => 'Категории',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
