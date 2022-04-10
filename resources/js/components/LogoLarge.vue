@@ -1,5 +1,14 @@
+<script setup>
+
+const scroll = () =>{
+    window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+});
+}
+</script>
 <template>
-    <svg
+    <svg @click="scroll"
         width="187"
         height="58"
         viewBox="0 0 187 58"
