@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Basket;
+use App\Models\User;
 
 class BasketService
 {
@@ -19,8 +20,16 @@ class BasketService
         return $item;
     }
     public function add($data){
-        $item = Basket::create($data);
-        return $item;
+        $user = User::findOrFail($data['user_id']);
+        $basket = Basket::where('user_id', $user->id)->count();
+        if($basket == 0){
+            $basket = new Basket(['user_id' => $user->id]);
+            $basket->save();
+        }else{
+            $basket = Basket::where('user_id', $user->id)->first();
+        }
+        $basket->products()->attach($data['product_id']);
+        return $basket;
     }   
     public function delete($id){
         $item = Basket::findOrFail($id);
