@@ -26,4 +26,9 @@ class OrderService
         $item = Order::findOrFail($id);
         $item->delete;
     }
+
+    public function allForUser($user, $n){
+        $orders = Order::where('user_id', $user->id)->with('product')->paginate($n);
+        return $orders;
+    }
 }

@@ -3,7 +3,11 @@
 @section('content')
 <nav class="col-span-12 p-8 lg:h-32 bg-slate-400">
     <div class="flex flex-col lg:flex-row gap-4 m-auto max-w-7xl h-full lg:items-center lg:px-8 text-2xl">
-        <top-links></top-links>
+     @if(auth()->check() && auth()->user()->isAdmin())   
+      <top-admin></top-admin>
+      @else
+      <top-links></top-links>
+      @endif
     </div>
 </nav>
 
