@@ -17,12 +17,12 @@
 </nav>
 
 {{-- <div class="flex flex-col flex-wrap lg:flex-row gap-10 justify-center"> --}}
-    <div class="grid grid-cols-12 gap-8 col-span-12 mx-auto max-w-7xl px-8">
+    <div class="grid grid-cols-12 gap-8 col-span-12 mx-auto max-w-7xl px-8 mb-2">
         <h1 class="col-span-12 text-4xl font-normal text-slate-900 mb-2">{{$cat->title}}</h1>
         <h1 class="col-span-12 text-2xl font-normal text-slate-900 mb-2">Подкатегории</h1>
         <div class="flex w-full gap-4 col-span-12">
             @foreach ($cat->subcategories as $sub)
-                <a class="flex-none text-xl" href='#'>{{$sub->title}}</a>
+                <a class="flex-none text-xl" href='{{route('subcategory.show', $sub->id)}}'>{{$sub->title}}</a>
             @endforeach
         </div>
         <h1 class="col-span-12 text-2xl font-normal text-slate-900 mb-2">Товары</h1>

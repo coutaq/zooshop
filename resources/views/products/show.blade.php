@@ -18,7 +18,7 @@ $similar = $pr->random(4);
 </nav>
 <div class="grid grid-cols-12 gap-8 col-span-12 mx-auto max-w-7xl px-8 pt-3 mt-5">
     <div class="col-span-4 hidden aspect-square rounded-lg overflow-hidden lg:block">
-        <img src="{{$product->image}}" class="w-full h-full object-center object-cover">
+        <img src="{{$product->image}}" class="w-full h-full object-contain p-3">
     </div>
 
     <!-- Product info -->
@@ -30,7 +30,7 @@ $similar = $pr->random(4);
                     <h3 class="sr-only">Описание</h3>
 
                     <div class="space-y-6">
-                        <p class="text-base text-gray-900">{{$product->description}}</p>
+                        <p class="text-base text-gray-900 inline-block">{{$product->description}}</p>
                     </div>
                 </div>
 

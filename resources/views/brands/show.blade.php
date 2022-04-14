@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@inject('brands', 'App\Services\CategoryService')
+@inject('brands', 'App\Services\BrandService')
 @inject('pr', 'App\Services\ProductService')
 @section('content')
 @php

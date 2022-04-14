@@ -12,7 +12,7 @@
 </nav>
 
 {{-- <div class="flex flex-col flex-wrap lg:flex-row gap-10 justify-center"> --}}
-    <div class="grid grid-cols-12 gap-8 col-span-12 mx-auto max-w-7xl px-8">
+    <div class="grid grid-cols-12 gap-8 col-span-12 mx-auto max-w-7xl px-8 w-full">
         <h1 class="col-span-12 text-4xl font-normal text-slate-900 mb-2">Бренды</h1>
         @foreach ($brands->browse() as $c)
         <brand-card brand="{{$c}}"></brand-card>

@@ -18,13 +18,13 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
             // BasketSeeder::class,
-            CategorySeeder::class,
-            // OrderSeeder::class,
+            // CategorySeeder::class,
+            // // OrderSeeder::class,
             
-            // // RoleSeeder::class,
-            BrandSeeder::class,
-            SubcategorySeeder::class,
-            ProductSeeder::class,
+            // // // RoleSeeder::class,
+            // BrandSeeder::class,
+            // SubcategorySeeder::class,
+            // ProductSeeder::class,
         ]);
     }
 }

@@ -15,7 +15,7 @@ let us = props.user
     <div
         class="rounded-lg shadow-lg bg-white col-span-12 md:col-span-5 lg:col-span-3 h-[432px] flex-none hover:shadow-2xl hover:scale-105 duration-300 flex flex-col justify-between"
     >
-        <img class="rounded-t-lg" :src="pr.image" />
+        <img class="rounded-t-lg h-[220px] aspect-square object-contain p-3" :src="pr.image" />
         <div class="px-6">
             <h5
                 v-if="pr.subcategory && pr.subcategory.category"
