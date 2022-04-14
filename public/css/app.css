@@ -627,6 +627,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-96 {
   height: 24rem;
 }
+.h-\[300px\] {
+  height: 300px;
+}
+.h-\[150px\] {
+  height: 150px;
+}
+.h-\[250px\] {
+  height: 250px;
+}
+.h-\[220px\] {
+  height: 220px;
+}
 .w-full {
   width: 100%;
 }
@@ -778,6 +790,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-clip-padding {
   background-clip: padding-box;
 }
+.object-contain {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -800,6 +816,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .p-2 {
   padding: 0.5rem;
+}
+.p-3 {
+  padding: 0.75rem;
 }
 .px-8 {
   padding-left: 2rem;
